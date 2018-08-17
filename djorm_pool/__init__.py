@@ -49,7 +49,9 @@ def _on_connect(*args, **kwargs):
 def patch_mysql():
     class hashabledict(dict):
         def __hash__(self):
-            return hash(tuple(sorted(self.items())))
+			# in python3 dict is sorted
+            # return hash(tuple(sorted(self.items())))
+			return hash(tuple(self.items()))
 
     class hashablelist(list):
         def __hash__(self):
