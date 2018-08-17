@@ -29,8 +29,8 @@ def _on_checkout(dbapi_connection, connection_record, connection_proxy):
         try:
             cursor.execute("SELECT 1")
         except:
-            # raise DisconnectionError - pool will try
-            # connecting again up to three times before raising.
+        # raise DisconnectionError - pool will try
+        # connecting again up to three times before raising.
             raise exc.DisconnectionError()
         finally:
             cursor.close()
@@ -49,9 +49,9 @@ def _on_connect(*args, **kwargs):
 def patch_mysql():
     class hashabledict(dict):
         def __hash__(self):
-			# in python3 dict is sorted
-            # return hash(tuple(sorted(self.items())))
-			return hash(tuple(self.items()))
+        # in python3 dict is sorted
+        # return hash(tuple(sorted(self.items())))
+            return hash(tuple(self.items()))
 
     class hashablelist(list):
         def __hash__(self):
